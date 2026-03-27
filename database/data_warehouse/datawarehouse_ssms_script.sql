@@ -3,71 +3,65 @@ CREATE DATABASE supply_chain_dw;
 use supply_chain_dw;
 
 
--- Creating dimension tables  : 
-create table dbo.dim_product(
-	product_key int not null primary key, 
-	sku_id int,
-	product_name varchar(100),
-	category text
-);
+-- Dimension Tables  : 
 
-DROP TABLE dbo.dim_product;
-GO
-
-CREATE TABLE dbo.dim_product (
+CREATE TABLE dbo.dim_product(
     product_key INT IDENTITY(1,1) PRIMARY KEY,
     sku_id VARCHAR(50),
-    product_name NVARCHAR(100),
-    category NVARCHAR(100)
-);
-GO
-
-create table dbo.dim_warehouse(
-	warehouse_key int primary key not null,
-	warehouse_id int,
-	city text,
-	region text
-);
-
-create table dbo.dim_supplier( 
-	supplier_key int primary key,
-	supplier_id int,
-	supplier_name text,
-	supplier_type varchar(50)
+    product_name VARCHAR(100),
+    category VARCHAR(100)
 );
 
 
-create table dbo.dim_date(
-	date_key int primary key,
-	full_date Date
+CREATE TABLE dbo.dim_warehouse(
+    warehouse_key INT IDENTITY(1,1) PRIMARY KEY,
+    warehouse_id VARCHAR(50),
+    warehouse_name VARCHAR(100),
+    warehouse_city VARCHAR(100),
+    region VARCHAR(100)
 );
 
--- Create Fact Table : fact_supply_chain
-create table fact_supply_chain(
-	fact_id int primary key,
-	date_key int,  
-	product_key  int, 
-	warehouse_key int,
-	supplier_key int, 
-	units_sold int,
-	inventory_level int, 
-	reorder_point int,
-	order_qty int,
-	unit_cost decimal(10 , 2),
-	unit_price decimal (10 , 2),
-	demand_forecast int,
-	stockout_flag int,
-	promotion_flag int,
-	supplier_lead_time_days int
+CREATE TABLE dbo.dim_supplier(
+    supplier_key INT IDENTITY(1,1) PRIMARY KEY,
+    supplier_id VARCHAR(50),
+    supplier_name VARCHAR(100),
+    supplier_type VARCHAR(100)
+);
+
+CREATE TABLE dbo.dim_date(
+    date_key INT PRIMARY KEY,
+    full_date DATE
 );
 
 
+
+CREATE TABLE dbo.fact_supply_chain(
+    fact_id INT IDENTITY(1,1) PRIMARY KEY,
+    date_key INT,
+    product_key INT,
+    warehouse_key INT,
+    supplier_key INT,
+    units_sold INT,
+    inventory_level INT,
+    reorder_point INT,
+    order_qty INT,
+    unit_cost DECIMAL(10,2),
+    unit_price DECIMAL(10,2),
+    demand_forecast DECIMAL(10,2),
+    stockout_flag INT,
+    promotion_flag INT,
+    supplier_lead_time_days INT
+);
+
+
+-- Checking the schema and the tables names that i have created
 
 SELECT TABLE_SCHEMA, TABLE_NAME
 FROM INFORMATION_SCHEMA.TABLES
 ORDER BY TABLE_NAME;
 GO
 
+-- Now setting the realtions in between the tables : 
 
 alter table fact_supply_chain
 	add constraint product_contraint
@@ -88,3 +82,5 @@ alter table fact_supply_chain
 	add constraint date_constraint
 	foreign key (date_key)
 	references dim_date(date_key);
+
+
