@@ -1,0 +1,6 @@
+warehouse_id,warehouse_name,warehouse_city,region
+WH_1,Dublin Central Warehouse,Dublin,West
+WH_2,Cork Distribution Hub,Cork,South
+WH_3,Galway Fulfillment Center,Galway,West
+WH_4,Limerick Supply Hub,Limerick,South
+WH_5,Belfast Storage Center,Belfast,North

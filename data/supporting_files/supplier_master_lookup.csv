@@ -1,0 +1,11 @@
+supplier_id,supplier_name,supplier_type
+SUP_1,Alpha Supplies Ltd,Electronics Supplier
+SUP_2,PrimeSource Distributors,General Supplier
+SUP_3,Vertex Components,Component Supplier
+SUP_4,NorthStar Traders,Wholesale Supplier
+SUP_5,Delta Retail Supply,Retail Supplier
+SUP_6,Everlink Logistics Supply,Logistics Partner
+SUP_7,BluePeak Imports,Import Supplier
+SUP_8,SwiftChain Distributors,Distribution Partner
+SUP_9,NextWave Sourcing,Sourcing Partner
+SUP_10,CoreLine Materials,Material Supplier
