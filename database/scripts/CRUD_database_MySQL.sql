@@ -371,9 +371,61 @@ ON UPDATE CASCADE
 ON DELETE RESTRICT;
 
 
+SET GLOBAL net_read_timeout = 600;
+SET GLOBAL net_write_timeout = 600;
+SET GLOBAL wait_timeout = 600;
+SET GLOBAL interactive_timeout = 600;
+
+SET GLOBAL max_allowed_packet = 1073741824;
 
 
+drop table if exists final_supply_chain_enriched;
 
+-- Final Table to save as it would act as the base for the ssms and ssis 
+CREATE TABLE final_supply_chain_enriched AS
+SELECT
+    i.date,
+    i.sku_id,
+    s.product_name,
+    s.product_category,
+    i.warehouse_id,
+    i.warehouse_name,
+    i.warehouse_city,
+    i.region,
+    sp.supplier_id,
+    sp.supplier_name,
+    sp.supplier_type,
+    s.units_sold,
+    i.inventory_level,
+    sp.supplier_lead_time_days,
+    i.reorder_point,
+    i.order_qty,
+    sp.unit_cost,
+    sp.unit_price,
+    s.promotion_flag,
+    i.stockout_flag,
+    s.demand_forecast
+FROM inventory_operational i
+JOIN sales_demand_operational s
+    ON i.date = s.date
+   AND i.sku_id = s.sku_id
+   AND i.warehouse_id = s.warehouse_id
+JOIN supplier_pricing_operational sp
+    ON i.date = sp.date
+   AND i.sku_id = sp.sku_id
+LIMIT 20000;
+
+
+SELECT COUNT(*) FROM final_supply_chain_enriched;
+SELECT * FROM final_supply_chain_enriched LIMIT 20;
+
+
+SELECT * 
+FROM final_supply_chain_enriched
+INTO OUTFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/final_supply_chain_sample.csv'
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n';
 
 
 
