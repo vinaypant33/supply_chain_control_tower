@@ -1,0 +1,28 @@
+Core
+    pandas
+    numpy
+    matplotlib
+    seaborn
+    plotly
+    dash
+    scikit-learn
+Database
+    sqlalchemy
+    pyodbc
+    mysql-connector-python
+EDA / Analysis
+    missingno
+    ydata-profiling
+Machine Learning
+    xgboost
+    lightgbm
+    statsmodels
+Utilities
+    tqdm
+    python-dotenv
+    joblib
+Excel
+    openpyxl
+API (future)
+    fastapi
+    uvicorn
