@@ -11,6 +11,17 @@ create table dbo.dim_product(
 	category text
 );
 
+DROP TABLE dbo.dim_product;
+GO
+
+CREATE TABLE dbo.dim_product (
+    product_key INT IDENTITY(1,1) PRIMARY KEY,
+    sku_id VARCHAR(50),
+    product_name NVARCHAR(100),
+    category NVARCHAR(100)
+);
+GO
+
 create table dbo.dim_warehouse(
 	warehouse_key int primary key not null,
 	warehouse_id int,
