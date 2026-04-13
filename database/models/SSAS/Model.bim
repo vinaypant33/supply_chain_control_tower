@@ -1,0 +1,473 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1500,
+  "model": {
+    "culture": "en-IN",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/(localdb)\\MSSQLLocalDB;supply_chain_dw",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "(localdb)\\MSSQLLocalDB",
+            "database": "supply_chain_dw"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "credential": {
+          "AuthenticationKind": "ServiceAccount",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "dim_date",
+        "columns": [
+          {
+            "name": "date_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "date_key",
+            "sortByColumn": "Month Number"
+          },
+          {
+            "name": "full_date",
+            "dataType": "dateTime",
+            "sourceColumn": "full_date"
+          },
+          {
+            "type": "calculated",
+            "name": "Year",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": " YEAR(dim_date[full_date])"
+          },
+          {
+            "type": "calculated",
+            "name": "Month Number",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": " MONTH(dim_date[full_date])"
+          },
+          {
+            "type": "calculated",
+            "name": "Month Name",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": " FORMAT(dim_date[full_date], \"MMMM\")",
+            "sortByColumn": "Month Number"
+          },
+          {
+            "type": "calculated",
+            "name": "Quarter",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": " \"Q\" & FORMAT(dim_date[full_date], \"Q\")"
+          },
+          {
+            "type": "calculated",
+            "name": "Day",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": " DAY(dim_date[full_date])"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/(localdb)\\MSSQLLocalDB;supply_chain_dw\",",
+                "    dbo_dim_date = Source{[Schema=\"dbo\",Item=\"dim_date\"]}[Data]",
+                "in",
+                "    dbo_dim_date"
+              ]
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "levels": [
+              {
+                "name": "Year",
+                "ordinal": 0,
+                "column": "Year"
+              },
+              {
+                "name": "Quarter",
+                "ordinal": 1,
+                "column": "Quarter"
+              },
+              {
+                "name": "Month Name",
+                "ordinal": 2,
+                "column": "Month Name"
+              },
+              {
+                "name": "Day",
+                "ordinal": 3,
+                "column": "Day"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "dim_product",
+        "columns": [
+          {
+            "name": "product_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "product_key"
+          },
+          {
+            "name": "sku_id",
+            "dataType": "string",
+            "sourceColumn": "sku_id"
+          },
+          {
+            "name": "product_name",
+            "dataType": "string",
+            "sourceColumn": "product_name"
+          },
+          {
+            "name": "category",
+            "dataType": "string",
+            "sourceColumn": "category"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/(localdb)\\MSSQLLocalDB;supply_chain_dw\",",
+                "    dbo_dim_product = Source{[Schema=\"dbo\",Item=\"dim_product\"]}[Data]",
+                "in",
+                "    dbo_dim_product"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_supplier",
+        "columns": [
+          {
+            "name": "supplier_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "supplier_key"
+          },
+          {
+            "name": "supplier_id",
+            "dataType": "string",
+            "sourceColumn": "supplier_id"
+          },
+          {
+            "name": "supplier_name",
+            "dataType": "string",
+            "sourceColumn": "supplier_name"
+          },
+          {
+            "name": "supplier_type",
+            "dataType": "string",
+            "sourceColumn": "supplier_type"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/(localdb)\\MSSQLLocalDB;supply_chain_dw\",",
+                "    dbo_dim_supplier = Source{[Schema=\"dbo\",Item=\"dim_supplier\"]}[Data]",
+                "in",
+                "    dbo_dim_supplier"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_warehouse",
+        "columns": [
+          {
+            "name": "warehouse_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "warehouse_key"
+          },
+          {
+            "name": "warehouse_id",
+            "dataType": "string",
+            "sourceColumn": "warehouse_id"
+          },
+          {
+            "name": "warehouse_name",
+            "dataType": "string",
+            "sourceColumn": "warehouse_name"
+          },
+          {
+            "name": "warehouse_city",
+            "dataType": "string",
+            "sourceColumn": "warehouse_city"
+          },
+          {
+            "name": "region",
+            "dataType": "string",
+            "sourceColumn": "region"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/(localdb)\\MSSQLLocalDB;supply_chain_dw\",",
+                "    dbo_dim_warehouse = Source{[Schema=\"dbo\",Item=\"dim_warehouse\"]}[Data]",
+                "in",
+                "    dbo_dim_warehouse"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "fact_supply_chain",
+        "columns": [
+          {
+            "name": "fact_id",
+            "dataType": "int64",
+            "sourceColumn": "fact_id"
+          },
+          {
+            "name": "date_key",
+            "dataType": "int64",
+            "sourceColumn": "date_key"
+          },
+          {
+            "name": "product_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "product_key"
+          },
+          {
+            "name": "warehouse_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "warehouse_key"
+          },
+          {
+            "name": "supplier_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "supplier_key"
+          },
+          {
+            "name": "units_sold",
+            "dataType": "int64",
+            "sourceColumn": "units_sold"
+          },
+          {
+            "name": "inventory_level",
+            "dataType": "int64",
+            "sourceColumn": "inventory_level"
+          },
+          {
+            "name": "reorder_point",
+            "dataType": "int64",
+            "sourceColumn": "reorder_point"
+          },
+          {
+            "name": "order_qty",
+            "dataType": "int64",
+            "sourceColumn": "order_qty"
+          },
+          {
+            "name": "unit_cost",
+            "dataType": "double",
+            "sourceColumn": "unit_cost"
+          },
+          {
+            "name": "unit_price",
+            "dataType": "double",
+            "sourceColumn": "unit_price"
+          },
+          {
+            "name": "demand_forecast",
+            "dataType": "double",
+            "sourceColumn": "demand_forecast"
+          },
+          {
+            "name": "stockout_flag",
+            "dataType": "int64",
+            "sourceColumn": "stockout_flag"
+          },
+          {
+            "name": "promotion_flag",
+            "dataType": "int64",
+            "sourceColumn": "promotion_flag"
+          },
+          {
+            "name": "supplier_lead_time_days",
+            "dataType": "int64",
+            "sourceColumn": "supplier_lead_time_days"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/(localdb)\\MSSQLLocalDB;supply_chain_dw\",",
+                "    dbo_fact_supply_chain = Source{[Schema=\"dbo\",Item=\"fact_supply_chain\"]}[Data]",
+                "in",
+                "    dbo_fact_supply_chain"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Total Units Sold",
+            "expression": "sum(fact_supply_chain[units_sold])",
+            "displayFolder": "Sales KPIs"
+          },
+          {
+            "name": "Total Inventory",
+            "expression": " SUM(fact_supply_chain[inventory_level])",
+            "displayFolder": "Inventory KPIs"
+          },
+          {
+            "name": "Stockout Count",
+            "expression": " SUM(fact_supply_chain[stockout_flag])",
+            "formatString": "0",
+            "displayFolder": "Inventory KPIs"
+          },
+          {
+            "name": "Total Revenue",
+            "expression": " SUMX(fact_supply_chain, fact_supply_chain[units_sold] * fact_supply_chain[unit_price])",
+            "formatString": "0",
+            "displayFolder": "Sales KPIs"
+          },
+          {
+            "name": "Total Cost",
+            "expression": " SUMX(fact_supply_chain, fact_supply_chain[units_sold] * fact_supply_chain[unit_cost])",
+            "formatString": "0",
+            "displayFolder": "Sales KPIs"
+          },
+          {
+            "name": "Profit",
+            "expression": " [Total Revenue] - [Total Cost]",
+            "formatString": "0.00",
+            "displayFolder": "Sales KPIs"
+          },
+          {
+            "name": "Profit Margin",
+            "expression": " DIVIDE([Profit], [Total Revenue])",
+            "formatString": "0.00%;-0.00%;0.00%",
+            "displayFolder": "Sales KPIs"
+          },
+          {
+            "name": "Total Sales",
+            "expression": [
+              " ",
+              "SUMX(",
+              "    fact_supply_chain,",
+              "    fact_supply_chain[units_sold] * fact_supply_chain[unit_price]",
+              ")"
+            ]
+          },
+          {
+            "name": "Avg Lead Time",
+            "expression": [
+              "",
+              "AVERAGE(fact_supply_chain[supplier_lead_time_days])"
+            ],
+            "formatString": "0.00"
+          },
+          {
+            "name": "Low Stock Count",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(fact_supply_chain),",
+              "    fact_supply_chain[inventory_level] < fact_supply_chain[reorder_point]",
+              ")"
+            ]
+          },
+          {
+            "name": "Revenue per Unit",
+            "expression": [
+              "",
+              "DIVIDE([Total Revenue], [Total Units Sold])"
+            ],
+            "formatString": "0.00"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "bf5d960d-53de-4943-881e-7dfe30d66a9c",
+        "fromTable": "fact_supply_chain",
+        "fromColumn": "date_key",
+        "toTable": "dim_date",
+        "toColumn": "date_key"
+      },
+      {
+        "name": "b10346f5-68c7-409f-96be-c8a5395f69e8",
+        "fromTable": "fact_supply_chain",
+        "fromColumn": "product_key",
+        "toTable": "dim_product",
+        "toColumn": "product_key"
+      },
+      {
+        "name": "367668d7-667a-429b-9641-7cd11c4e16e0",
+        "fromTable": "fact_supply_chain",
+        "fromColumn": "supplier_key",
+        "toTable": "dim_supplier",
+        "toColumn": "supplier_key"
+      },
+      {
+        "name": "9a09897f-28de-4bf4-8f50-d82ea85461cf",
+        "fromTable": "fact_supply_chain",
+        "fromColumn": "warehouse_key",
+        "toTable": "dim_warehouse",
+        "toColumn": "warehouse_key"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "600"
+      },
+      {
+        "name": "__TEdtr",
+        "value": "1"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
