@@ -1,0 +1,16 @@
+Public Sub Main()
+    Dim reportPath As String = "C:\Users\vinay\Downloads\Data Analytics Projects Final Ones\Supply Chain Control Tower\supply_chain_control_tower\database\models\SSAS"
+    Dim format As String = "PDF"
+    Dim deviceInfo As String = Nothing
+    Dim extension As String = "pdf"
+    Dim mimeType As String = Nothing
+    Dim encoding As String = Nothing
+    Dim warnings() As Warning = Nothing
+    Dim streamIDs() As String = Nothing
+
+    Dim result As Byte() = rs.Render(reportPath, format, deviceInfo, extension, mimeType, encoding, warnings, streamIDs)
+
+    Dim stream As FileStream = File.Create("C:\Reports\InventoryReport.pdf", result.Length)
+    stream.Write(result, 0, result.Length)
+    stream.Close()
+End Sub

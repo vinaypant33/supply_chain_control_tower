@@ -1,0 +1,1 @@
+rs.exe -i model.rss -s http://localhost/reportserver
