@@ -43,7 +43,7 @@ This system provides a **centralized control tower** to monitor and optimize the
 ### 🔁 Data Flow
 
 ```text
-Raw CSV Data
+Raw CSV Data / Data from OLTP Database
     ↓
 SSIS ETL Pipeline
     ↓
@@ -60,13 +60,13 @@ Automated Execution via Task Scheduler
 
 | Layer         | Tools                                  |
 | ------------- | -------------------------------------- |
-| Data Source   | CSV Files                              |
+| Data Source   | CSV Files / My SQL Database            |
 | ETL           | SSIS                                   |
 | Database      | SQL Server                             |
 | Reporting     | SSRS                                   |
 | Visualization | Power BI                               |
 | Automation    | Windows Task Scheduler + Batch Scripts |
-| Scripting     | Python (optional utilities)            |
+| Scripting     | Python (optional utilities) + EDA      |
 
 ---
 
