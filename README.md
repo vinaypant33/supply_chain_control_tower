@@ -172,7 +172,7 @@ SSRS_Runner.bat
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="dashboards/screenshots/Dashboard Screen - 01 (Power BI).png" width="600"/>
+  <img src="https://github.com/vinaypant33/supply_chain_control_tower/blob/main/dashboards/Screenshots/Dashbaord%20Screen%20-%2001%20(%20Power%20BI%20).png" width="600"/>
 </p>
 
 ---
