@@ -37,7 +37,7 @@ This system provides a **centralized control tower** to monitor and optimize the
 # Schema
 
 <p align="center">
-  <img src="https://github.com/vinaypant33/supply_chain_control_tower/blob/main/docs/Dashboard%20Screenshots/Star%20Schema%20Diagram.png" width="800"/>
+  <img src="https://github.com/vinaypant33/supply_chain_control_tower/blob/main/database/screenshots/SSMS%20Data%20Warehouse/Database%20ER%20diagram%20(crow's%20foot).png" width="800"/>
 </p>
 
 ### 🔁 Data Flow
@@ -181,6 +181,10 @@ SSRS_Runner.bat
 
 <p align="center">
   <img src="https://github.com/vinaypant33/supply_chain_control_tower/blob/main/etl/ssis/screenshots/Full%20ETL%20Load.png" width="800"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/vinaypant33/supply_chain_control_tower/blob/main/docs/Dashboard%20Screenshots/Star%20Schema%20Diagram.png" width="800"/>
 </p>
 
 ---
