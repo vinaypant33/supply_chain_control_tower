@@ -1,2 +1,204 @@
-# supply_chain_control_tower
-End-to-end supply chain control tower integrating multi-source data, ETL pipelines, stockout risk prediction, and interactive dashboards for operational and analytical decision-making.
+# Supply Chain Control Tower Dashboard
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Project-Production%20Ready-black?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Data%20Pipeline-SSIS-blue?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Visualization-Power%20BI-yellow?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Reporting-SSRS-red?style=for-the-badge"/>
+</p>
+
+<p align="center">
+  <b>End-to-End Data Analytics System simulating a real-world Supply Chain Control Tower</b>
+</p>
+
+---
+
+## 🎯 Overview
+
+This project simulates a **production-grade supply chain analytics system** where data flows through ETL pipelines into a centralized warehouse and is visualized through reporting and dashboards.
+
+It combines **data engineering + analytics + automation** into a single integrated system.
+
+---
+
+## 🧠 Problem Statement
+
+Organizations struggle with:
+
+* Inventory imbalance
+* Stockouts and overstocking
+* Supplier performance visibility
+* Demand vs sales mismatch
+
+This system provides a **centralized control tower** to monitor and optimize these areas.
+
+---
+
+# Schema
+
+<p align="center">
+  <img src="https://github.com/vinaypant33/supply_chain_control_tower/blob/main/docs/Dashboard%20Screenshots/Star%20Schema%20Diagram.png" width="800"/>
+</p>
+
+### 🔁 Data Flow
+
+```text
+Raw CSV Data
+    ↓
+SSIS ETL Pipeline
+    ↓
+SQL Server Data Warehouse
+    ↓
+SSRS Reports + Power BI Dashboard
+    ↓
+Automated Execution via Task Scheduler
+```
+
+---
+
+## ⚙️ Tech Stack
+
+| Layer         | Tools                                  |
+| ------------- | -------------------------------------- |
+| Data Source   | CSV Files                              |
+| ETL           | SSIS                                   |
+| Database      | SQL Server                             |
+| Reporting     | SSRS                                   |
+| Visualization | Power BI                               |
+| Automation    | Windows Task Scheduler + Batch Scripts |
+| Scripting     | Python (optional utilities)            |
+
+---
+
+## 📊 Dashboard Highlights
+
+✔ Inventory Gap Analysis
+✔ Supplier Profitability
+✔ Demand vs Sales Insights
+✔ Warehouse Contribution
+✔ Interactive Filters
+
+---
+
+## ⚡ Automation
+
+The system is fully automated using **Windows Task Scheduler**:
+
+### 🔹 ETL Automation
+
+* SSIS package executed via `dtexec`
+* Triggered using `.bat` scripts
+
+### 🔹 Reporting Automation
+
+* SSRS reports generated using `rs.exe`
+* Output exported as PDF
+
+### 🔹 Execution Flow
+
+```text
+Run_SSIS.bat → Update Warehouse → Run_SSRS.bat → Generate Reports
+```
+
+---
+
+## 📁 Project Structure
+
+```text
+SUPPLY_CHAIN_CONTROL_TOWER/
+│
+├── api/
+├── automation/
+├── dashboards/
+├── data/
+├── database/
+├── docs/
+├── etl/
+├── reports/
+├── notebooks/
+├── README.md
+```
+
+---
+
+## 📌 Key Features
+
+* End-to-end ETL pipeline
+* Centralized data warehouse
+* Automated reporting system
+* Business KPI tracking
+* Scalable architecture
+
+---
+
+## 🧾 KPI Coverage
+
+* Inventory Level
+* Demand Forecast
+* Sales (Units Sold)
+* Profit & Profit Margin
+* Stockout Indicator
+* Supplier Performance
+
+👉 Detailed explanation available in:
+`docs/kpi_explanation.md`
+
+---
+
+## 🚀 How to Run
+
+### 1. Setup Database
+
+* Execute SQL scripts from `database/`
+
+### 2. Run ETL
+
+```bash
+run_ssis.bat
+```
+
+### 3. Generate Reports
+
+```bash
+SSRS_Runner.bat
+```
+
+### 4. View Dashboard
+
+* Open Power BI file from `dashboards/`
+
+---
+
+## 📸 Screenshots
+
+<p align="center">
+  <img src="dashboards/screenshots/Dashboard Screen - 01 (Power BI).png" width="600"/>
+</p>
+
+---
+
+## 🎯 Business Impact
+
+This system enables:
+
+* Better inventory planning
+* Reduced stockouts
+* Improved supplier decisions
+* Data-driven operations
+
+---
+
+## 🧠 What Makes This Project Strong
+
+✔ Combines Data Engineering + Analytics
+✔ Uses industry tools (SSIS, SSRS, SQL Server)
+✔ Includes automation (real-world scenario)
+✔ Structured like enterprise pipeline
+
+---
+
+## ⭐ Final Note
+
+This project is designed to reflect **real-world enterprise data systems**, not just a dashboard.
+
+It demonstrates how raw data can be transformed into actionable insights through a structured and automated pipeline.
