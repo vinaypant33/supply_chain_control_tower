@@ -175,6 +175,14 @@ SSRS_Runner.bat
   <img src="https://github.com/vinaypant33/supply_chain_control_tower/blob/main/dashboards/Screenshots/Dashbaord%20Screen%20-%2001%20(%20Power%20BI%20).png" width="800"/>
 </p>
 
+<p align="center">
+  <img src="https://github.com/vinaypant33/supply_chain_control_tower/blob/main/database/screenshots/MY%20SQL%20Table%20Diagrams/database_with_connections.png" width="800"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/vinaypant33/supply_chain_control_tower/blob/main/etl/ssis/screenshots/Full%20ETL%20Load.png" width="800"/>
+</p>
+
 ---
 
 ## 🎯 Business Impact
@@ -188,7 +196,7 @@ This system enables:
 
 ---
 
-## 🧠 What Makes This Project Strong
+## 🧠 Project Highlights
 
 ✔ Combines Data Engineering + Analytics
 ✔ Uses industry tools (SSIS, SSRS, SQL Server)
