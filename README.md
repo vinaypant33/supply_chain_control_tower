@@ -13,7 +13,7 @@
 
 ---
 
-## 🎯 Overview
+## Overview
 
 This project simulates a **production-grade supply chain analytics system** where data flows through ETL pipelines into a centralized warehouse and is visualized through reporting and dashboards.
 
@@ -21,7 +21,7 @@ It combines **data engineering + analytics + automation** into a single integrat
 
 ---
 
-## 🧠 Problem Statement
+## Problem Statement
 
 Organizations struggle with:
 
@@ -40,7 +40,7 @@ This system provides a **centralized control tower** to monitor and optimize the
   <img src="https://github.com/vinaypant33/supply_chain_control_tower/blob/main/database/screenshots/SSMS%20Data%20Warehouse/Database%20ER%20diagram%20(crow's%20foot).png" width="800"/>
 </p>
 
-### 🔁 Data Flow
+### Data Flow
 
 ```text
 Raw CSV Data / Data from OLTP Database
@@ -49,28 +49,28 @@ SSIS ETL Pipeline
     ↓
 SQL Server Data Warehouse
     ↓
-SSRS Reports + Power BI Dashboard
+ Power BI Dashboard / Plotly Dash Dashboard
     ↓
 Automated Execution via Task Scheduler
 ```
 
 ---
 
-## ⚙️ Tech Stack
+## Tech Stack
 
 | Layer         | Tools                                  |
 | ------------- | -------------------------------------- |
 | Data Source   | CSV Files / My SQL Database            |
 | ETL           | SSIS                                   |
 | Database      | SQL Server                             |
-| Reporting     | SSRS                                   |
+| Reporting     | Power Bi , Plotly                      |
 | Visualization | Power BI                               |
 | Automation    | Windows Task Scheduler + Batch Scripts |
 | Scripting     | Python (optional utilities) + EDA      |
 
 ---
 
-## 📊 Dashboard Highlights
+## Dashboard Highlights
 
 ✔ Inventory Gap Analysis
 ✔ Supplier Profitability
@@ -80,21 +80,21 @@ Automated Execution via Task Scheduler
 
 ---
 
-## ⚡ Automation
+## Automation
 
 The system is fully automated using **Windows Task Scheduler**:
 
-### 🔹 ETL Automation
+### ETL Automation
 
 * SSIS package executed via `dtexec`
 * Triggered using `.bat` scripts
 
-### 🔹 Reporting Automation
+### Reporting Automation
 
 * SSRS reports generated using `rs.exe`
 * Output exported as PDF
 
-### 🔹 Execution Flow
+### Execution Flow
 
 ```text
 Run_SSIS.bat → Update Warehouse → Run_SSRS.bat → Generate Reports
@@ -102,7 +102,7 @@ Run_SSIS.bat → Update Warehouse → Run_SSRS.bat → Generate Reports
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 SUPPLY_CHAIN_CONTROL_TOWER/
@@ -121,7 +121,7 @@ SUPPLY_CHAIN_CONTROL_TOWER/
 
 ---
 
-## 📌 Key Features
+## Key Features
 
 * End-to-end ETL pipeline
 * Centralized data warehouse
@@ -131,7 +131,7 @@ SUPPLY_CHAIN_CONTROL_TOWER/
 
 ---
 
-## 🧾 KPI Coverage
+## KPI Coverage
 
 * Inventory Level
 * Demand Forecast
@@ -145,7 +145,7 @@ SUPPLY_CHAIN_CONTROL_TOWER/
 
 ---
 
-## 🚀 How to Run
+##  How to Run
 
 ### 1. Setup Database
 
@@ -189,7 +189,7 @@ SSRS_Runner.bat
 
 ---
 
-## 🎯 Business Impact
+## Business Impact
 
 This system enables:
 
@@ -200,16 +200,16 @@ This system enables:
 
 ---
 
-## 🧠 Project Highlights
+## Project Highlights
 
 ✔ Combines Data Engineering + Analytics
-✔ Uses industry tools (SSIS, SSRS, SQL Server)
+✔ Uses industry tools (SSIS, Power BI , Plotly Dash , SQL Server)
 ✔ Includes automation (real-world scenario)
 ✔ Structured like enterprise pipeline
 
 ---
 
-## ⭐ Final Note
+## Final Note
 
 This project is designed to reflect **real-world enterprise data systems**, not just a dashboard.
 
