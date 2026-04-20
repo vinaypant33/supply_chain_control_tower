@@ -1,0 +1,377 @@
+/* ============================================================
+   GOOGLE FONT
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ============================================================
+   THEME VARIABLES
+   ============================================================ */
+
+.light-theme {
+  --bg-page:        #f0f4f8;
+  --bg-card:        #ffffff;
+  --bg-kpi:         #ffffff;
+  --bg-input:       #ffffff;
+  --border-color:   #dce3ed;
+  --text-primary:   #102a43;
+  --text-secondary: #486581;
+  --text-label:     #334e68;
+  --text-muted:     #627d98;
+  --header-bg:      #1e3a5f;
+  --header-text:    #ffffff;
+  --slider-track:   #b0c4d8;
+  --slider-thumb:   #1e6091;
+}
+
+.dark-theme {
+  --bg-page:        #0b1220;
+  --bg-card:        #111a2b;
+  --bg-kpi:         #0f1728;
+  --bg-input:       #0d1526;
+  --border-color:   #1f2a44;
+  --text-primary:   #f8fafc;
+  --text-secondary: #9fb0c7;
+  --text-label:     #d7e3f4;
+  --text-muted:     #8fa6c3;
+  --header-bg:      #060d1a;
+  --header-text:    #f8fafc;
+  --slider-track:   #2d3f5e;
+  --slider-thumb:   #4a9eca;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+.app-container {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0;
+  min-height: 100vh;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ============================================================
+   HEADER — Power BI style dark navy bar
+   ============================================================ */
+
+.header-container {
+  background: var(--header-bg);
+  padding: 16px 28px;
+  border-bottom: 3px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--header-text);
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   CONTENT WRAPPER (padding inside page)
+   ============================================================ */
+
+.content-wrap {
+  padding: 20px 24px;
+}
+
+/* add .content-wrap to the inner Div below header in layout.py if needed,
+   OR just set padding on .filters-container / .kpi-grid directly */
+
+.filters-container,
+.kpi-grid,
+.chart-row,
+.table-card,
+.slider-container {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* ============================================================
+   FILTERS
+   ============================================================ */
+
+.filters-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-top: 18px;
+  margin-bottom: 12px;
+}
+
+.filter-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 10px 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.filter-box label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   DROPDOWN THEMING — Dash react-select v1
+   ============================================================ */
+
+/* Light */
+.light-theme .Select-control {
+  background-color: #ffffff !important;
+  border: 1px solid #c8d6e5 !important;
+  border-radius: 6px !important;
+  min-height: 34px !important;
+}
+.light-theme .Select-value-label,
+.light-theme .Select-placeholder,
+.light-theme .Select-input > input {
+  color: #102a43 !important;
+  font-size: 13px !important;
+}
+.light-theme .Select-arrow { border-top-color: #627d98 !important; }
+.light-theme .Select-menu-outer {
+  background-color: #ffffff !important;
+  border: 1px solid #c8d6e5 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1) !important;
+  z-index: 9999;
+}
+.light-theme .VirtualizedSelectOption,
+.light-theme .Select-option {
+  background-color: #ffffff !important;
+  color: #102a43 !important;
+  font-size: 13px !important;
+}
+.light-theme .VirtualizedSelectFocusedOption,
+.light-theme .Select-option.is-focused {
+  background-color: #eef4fb !important;
+  color: #102a43 !important;
+}
+.light-theme .Select-option.is-selected {
+  background-color: #d6eaf8 !important;
+  color: #1e6091 !important;
+  font-weight: 600 !important;
+}
+
+/* Dark */
+.dark-theme .Select-control {
+  background-color: #0d1526 !important;
+  border: 1px solid #2d3f5e !important;
+  border-radius: 6px !important;
+  min-height: 34px !important;
+}
+.dark-theme .Select-value-label,
+.dark-theme .Select-placeholder,
+.dark-theme .Select-input > input {
+  color: #e6edf7 !important;
+  font-size: 13px !important;
+}
+.dark-theme .Select-arrow { border-top-color: #8fa6c3 !important; }
+.dark-theme .Select-menu-outer {
+  background-color: #0d1526 !important;
+  border: 1px solid #2d3f5e !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
+  z-index: 9999;
+}
+.dark-theme .VirtualizedSelectOption,
+.dark-theme .Select-option {
+  background-color: #0d1526 !important;
+  color: #e6edf7 !important;
+  font-size: 13px !important;
+}
+.dark-theme .VirtualizedSelectFocusedOption,
+.dark-theme .Select-option.is-focused {
+  background-color: #1b2842 !important;
+  color: #ffffff !important;
+}
+.dark-theme .Select-option.is-selected {
+  background-color: #1b2e4a !important;
+  color: #4a9eca !important;
+}
+
+/* ============================================================
+   LEAD TIME RANGE SLIDER
+   ============================================================ */
+
+.slider-container {
+  margin-bottom: 14px;
+}
+
+.slider-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 14px 18px 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.slider-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+/* Dash RangeSlider track + handle colours */
+.rc-slider-track { background-color: var(--slider-thumb) !important; }
+.rc-slider-handle {
+  border-color: var(--slider-thumb) !important;
+  background-color: var(--slider-thumb) !important;
+}
+.rc-slider-rail { background-color: var(--slider-track) !important; }
+.rc-slider-handle:hover { box-shadow: 0 0 0 5px rgba(30,96,145,0.2) !important; }
+
+/* ============================================================
+   KPI CARDS — Power BI style
+   ============================================================ */
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.kpi-card {
+  background: var(--bg-kpi);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 16px 18px;
+  min-height: 80px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: background 0.3s ease, border-color 0.3s ease;
+  border-left: 3px solid var(--slider-thumb);
+}
+
+.kpi-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.kpi-value {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.15;
+}
+
+/* ============================================================
+   CHART + TABLE CARDS
+   ============================================================ */
+
+.chart-row {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.chart-row.two-col  { grid-template-columns: 1fr 1fr; }
+.chart-row.one-col  { grid-template-columns: 1fr; }
+
+.chart-card,
+.table-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 14px 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.chart-title {
+  margin: 0 0 6px 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+.table-card {
+  margin-bottom: 30px;
+}
+
+/* ============================================================
+   TABLE
+   ============================================================ */
+
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner table {
+  border-collapse: collapse !important;
+}
+
+/* ============================================================
+   FLOATING THEME TOGGLE
+   ============================================================ */
+
+.theme-toggle-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  transition: background 0.25s ease, transform 0.2s ease;
+  outline: none;
+}
+
+.light-theme .theme-toggle-btn { background: #1e3a5f; color: #ffffff; }
+.dark-theme  .theme-toggle-btn { background: #1f2a44; color: #f8fafc; }
+.theme-toggle-btn:hover { transform: scale(1.1); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1200px) {
+  .filters-container, .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .chart-row.two-col { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 700px) {
+  .filters-container, .kpi-grid { grid-template-columns: 1fr; }
+  .main-title  { font-size: 18px; }
+  .kpi-value   { font-size: 22px; }
+}
