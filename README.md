@@ -89,15 +89,10 @@ The system is fully automated using **Windows Task Scheduler**:
 * SSIS package executed via `dtexec`
 * Triggered using `.bat` scripts
 
-### Reporting Automation
-
-* SSRS reports generated using `rs.exe`
-* Output exported as PDF
-
 ### Execution Flow
 
 ```text
-Run_SSIS.bat → Update Warehouse → Run_SSRS.bat → Generate Reports
+Run_SSIS.bat → Update Warehouse → Check Dashboard
 ```
 
 ---
@@ -157,13 +152,7 @@ SUPPLY_CHAIN_CONTROL_TOWER/
 run_ssis.bat
 ```
 
-### 3. Generate Reports
-
-```bash
-SSRS_Runner.bat
-```
-
-### 4. View Dashboard
+### 3. View Dashboard
 
 * Open Power BI file from `dashboards/`
 
